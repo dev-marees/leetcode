@@ -22,8 +22,8 @@ func findErrorNums(nums []int) []int {
 		actualSum += nums[i]
 	}
 
+	expectedSum := len(nums) * (len(nums) + 1) / 2
 	for i := 0; i < len(nums); i++ {
-		expectedSum := len(nums) * (len(nums) + 1) / 2
 		if _, ok := temp[nums[i]]; ok {
 			missedNumber := expectedSum - (actualSum - nums[i])
 			result = append(result, nums[i], missedNumber)
