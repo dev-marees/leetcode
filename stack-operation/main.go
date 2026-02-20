@@ -2,17 +2,6 @@ package main
 
 import "fmt"
 
-type BuildArray interface {
-	push()
-	pop()
-	peak() int
-}
-
-type Stack struct {
-	input  []int
-	target int
-}
-
 func main() {
 	nums := []int{1, 3}
 	nums1 := []int{1, 2, 3}
@@ -20,29 +9,17 @@ func main() {
 	fmt.Println("build Array ::", buildArray(nums1, 3))
 }
 
-func (s Stack) push() {
-	for i := 1; i <= s.target; i++ {
-		if len(s.input) > 2 {
-			//Find peak
-			peakElement := s.peak()
-			if s.target % peakElement == 0 {
-				
-			}
-		}
-		s.input = append(s.input, i)
-	}
-}
-
-func (s Stack) peak() int {
-	return s.input[len(s.input)-1]
-}
-
-func buildArray(nums []int, target int) []string {
+func buildArray(target []int, n int) []string {
 	result := []string{}
-	intArray := []int{}
+	j := 0
 
-	for i := 1; i <= target; i++ {
-		intArray = append(intArray, 1)
+	for x := 1; x <= n && j < len(target); x++ {
+		result = append(result, "Push")
+		if x == target[j] {
+			j++
+		} else {
+			result = append(result, "Pop")
+		}
 	}
 
 	return result
